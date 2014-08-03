@@ -29,6 +29,7 @@ gem 'spring',        group: :development
 gem 'haml-rails'
 gem 'simple_form'
 gem 'devise'
+gem 'paperclip'
 
 group :test do
   gem 'rspec-rails'
