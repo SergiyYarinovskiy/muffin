@@ -1,0 +1,43 @@
+%h1 Hotel #{@hotel.title}
+%p
+  %b Breakfast included:
+  %br
+    -if @hotel.breakfast_in
+      Yes
+    - else
+      No
+  %b Room description:
+  %br
+    =@hotel.room_description
+%p
+  %b Price:
+  %br
+    =@hotel.rating
+%p
+  %h3
+    %b Address
+  %b Street:
+  %br
+    =@hotel.address.street
+  %b City:
+  %br
+    =@hotel.address.city
+  %b State:
+  %br
+    =@hotel.address.state
+  %b Country:
+  %br
+    =@hotel.address.country
+%p
+  %h3
+    %b Comments
+  -@hotel.comments.each do |comment|
+    %b Author:
+    %br
+      =comment.user_name
+    %b Rating:
+    %br
+      =comment.rating
+    %b Comment:
+    %br
+      =comment.body

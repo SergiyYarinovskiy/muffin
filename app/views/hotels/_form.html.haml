@@ -1,0 +1,19 @@
+=simple_form_for @hotel, html: { :class => 'form-horizontal' } do |f|
+  %fieldset
+    %legend
+      =controller.action_name.capitalize
+      hotel:
+    .control-group
+
+      =f.input :title
+      =f.input :rating, collection: %w(1 2 3 4 5), selected: 5
+      =f.input :breakfast_in, collection: %w(Yes No), selected: 'Yes'
+      =f.input :room_description
+      =f.input :price
+      =f.simple_fields_for :address do |a|
+        =a.input :country, as: :string
+        =a.input :state
+        =a.input :city
+        =a.input :street
+      %br
+      =f.button :submit, class: 'btn btn-primary'

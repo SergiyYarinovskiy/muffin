@@ -1,0 +1,28 @@
+-if user_signed_in?
+  %h1 Hotels
+  %table.table.table-striped
+    %thead
+      %tr
+        %th ID
+        %th Title
+        %th Creator
+        %th Creator rating
+        %th Created at
+        %th Actions
+    %tbody
+      -@hotels.each do |hotel|
+        %tr
+          %td
+            =hotel.id
+          %td
+            =link_to hotel.title, hotel_path(hotel)
+          %td
+            =hotel.user.email
+          %td
+            =hotel.rating
+          %td
+            =hotel.created_at
+          %td
+            =link_to 'Destroy', hotel_path(hotel), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger'
+-else
+  %h2 #{@hotels}
