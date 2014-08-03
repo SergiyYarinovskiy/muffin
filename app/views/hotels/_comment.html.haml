@@ -1,0 +1,10 @@
+%h3 New comment:
+=simple_form_for @comment, url: create_comment_path(@hotel), html: { class: 'form-horizontal' } do |f|
+  %b Rating:
+  %br
+    =f.input :rating, collection: %w(5 4 3 2 1), selected: 5
+  %b Comment
+  %br
+    =f.input :body
+    %br
+    =f.button :submit, class: 'btn btn-primary'

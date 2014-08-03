@@ -1,4 +1,8 @@
-=simple_form_for @hotel, html: { :class => 'form-horizontal' } do |f|
+-if @hotel.errors.any?
+  -@hotel.errors.full_messages.each do |error|
+    \- #{ error.to_s}
+    %br
+=simple_form_for @hotel, html: { class: 'form-horizontal', multipart: true } do |f|
   %fieldset
     %legend
       =controller.action_name.capitalize
@@ -6,7 +10,8 @@
     .control-group
 
       =f.input :title
-      =f.input :rating, collection: %w(1 2 3 4 5), selected: 5
+      =f.input :hotel_image
+      =f.input :rating, collection: %w(5 4 3 2 1), selected: 5
       =f.input :breakfast_in, collection: %w(Yes No), selected: 'Yes'
       =f.input :room_description
       =f.input :price

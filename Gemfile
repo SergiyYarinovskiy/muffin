@@ -30,6 +30,7 @@ gem 'haml-rails'
 gem 'simple_form'
 gem 'devise'
 gem 'paperclip'
+gem 'rmagick'
 
 group :test do
   gem 'rspec-rails'

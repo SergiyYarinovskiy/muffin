@@ -1,4 +1,13 @@
 %h1 Hotel #{@hotel.title}
+-if @hotel.hotel_image.exists?
+  =link_to(image_tag(@hotel.hotel_image.url(:thumb)), @hotel.hotel_image.url)
+-else
+  =image_tag @hotel.hotel_image.url(:thumb)
+%p
+%p
+  %b Average rating:
+  %br
+    #{'%.2f' % ((@hotel.comments.sum(:rating) + @hotel.rating)/(@hotel.comments.count + 1).to_f)}
 %p
   %b Breakfast included:
   %br
@@ -12,10 +21,9 @@
 %p
   %b Price:
   %br
-    =@hotel.rating
+    =@hotel.price
 %p
-  %h3
-    %b Address
+  %h3 Address
   %b Street:
   %br
     =@hotel.address.street
@@ -28,16 +36,31 @@
   %b Country:
   %br
     =@hotel.address.country
+%hr
 %p
-  %h3
-    %b Comments
-  -@hotel.comments.each do |comment|
-    %b Author:
-    %br
-      =comment.user_name
-    %b Rating:
-    %br
-      =comment.rating
-    %b Comment:
-    %br
-      =comment.body
+  %h3 Comments
+  %table.table.table-striped
+    %thead
+      %tr
+        %th #
+        %th Posted
+        %th by Author
+        %th Rating
+        %th Comment
+    %tbody
+      -number = 0
+      -@hotel.comments.each do |comment|
+        -number +=1
+        %tr
+          %td.short_td
+            =number
+          %td.short_td
+            =comment.created_at.strftime("%d/%m/%Y")
+          %td.short_td
+            =comment.user_name
+          %td.short_td
+            =comment.rating
+          %td
+            =comment.body
+%p
+  = render partial: 'comment'
