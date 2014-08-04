@@ -26,6 +26,6 @@
             =link_to 'Destroy', hotel_path(hotel), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger'
 -else
   %h2 Top 5 hotels:
-  -@sor_hotels[0..4].each do |hotel|
+  -@sorted_hotels.each do |hotel|
     \- #{hotel[:title]}
     %br

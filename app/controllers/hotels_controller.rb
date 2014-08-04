@@ -5,14 +5,11 @@ class HotelsController < ApplicationController
     if user_signed_in?
       @hotels = Hotel.all
     else
-      @sor_hotels = []
-      Hotel.all.each do |hotel|
-        @sor_hotels << { title: hotel.title,
-          average_rating: (hotel.comments.sum(:rating) + hotel.rating)/(hotel.comments.count + 1)}
-      end
-      @sor_hotels.sort_by! { |elem| elem[:average_rating] }.reverse!
+      @sorted_hotels = Hotel.sort_hotels
     end
   end
+
+
 
   def show
     @hotel = Hotel.find(params[:id])
