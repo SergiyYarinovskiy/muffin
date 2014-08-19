@@ -33,7 +33,7 @@ gem 'paperclip'
 gem 'rmagick'
 
 group :development, :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~>3.0.1'
   gem 'factory_girl_rails'
   gem 'capybara'
 end
