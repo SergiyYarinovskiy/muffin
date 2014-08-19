@@ -32,9 +32,11 @@ gem 'devise'
 gem 'paperclip'
 gem 'rmagick'
 
-group :development, :test do
+group :test do
   gem 'rspec-rails', '~>3.0.1'
+  gem 'shoulda-matchers'
   gem 'factory_girl_rails'
+  gem 'ffaker'
   gem 'capybara'
 end
 

@@ -9,8 +9,6 @@ class HotelsController < ApplicationController
     end
   end
 
-
-
   def show
     @hotel = Hotel.find(params[:id])
     @comment = Comment.new
