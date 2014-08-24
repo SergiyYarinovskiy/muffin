@@ -47,13 +47,4 @@ describe HotelsController do
           expect(response).to redirect_to hotels_path
     end
   end
-
-  describe 'create_comment,' do
-    it 'creates comment' do
-      sign_in :user, @user
-      expect{post :create_comment, { format: hotel.id, comment: {body: 'c1', rating: 5} }}.
-          to change(Comment, :count).by(1) and
-          expect(response).to redirect_to hotel_path(hotel)
-    end
-  end
 end

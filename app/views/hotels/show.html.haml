@@ -1,3 +1,7 @@
+-if flash[:notice]
+  .notice
+    = flash[:notice]
+  %br
 %h1 Hotel #{@hotel.title}
 -if @hotel.hotel_image.exists?
   =link_to(image_tag(@hotel.hotel_image.url(:thumb)), @hotel.hotel_image.url)
@@ -63,4 +67,4 @@
           %td
             =comment.body
 %p
-  = render partial: 'comment'
+  = render partial: 'comments/comment'

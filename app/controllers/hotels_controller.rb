@@ -36,14 +36,6 @@ class HotelsController < ApplicationController
     redirect_to hotels_path
   end
 
-  def create_comment
-    hotel = Hotel.find(params[:format])
-    @comment = Comment.new(hotel: hotel, user_name: current_user.email,
-      rating: params[:comment][:rating], body: params[:comment][:body])
-    @comment.save
-    redirect_to hotel_path(hotel)
-  end
-
   private
   def hotel_params
     params.require(:hotel).permit(:title, :hotel_image, :rating, :breakfast_in, :room_description, :price,

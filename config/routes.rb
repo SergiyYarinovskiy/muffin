@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :hotels
-
-  post 'create_comment', to: 'hotels#create_comment'
+  resources :comments, only: :create
 
   root to: "hotels#index"
   # The priority is based upon order of creation: first created -> highest priority.
