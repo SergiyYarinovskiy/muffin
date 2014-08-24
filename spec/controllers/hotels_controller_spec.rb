@@ -1,7 +1,11 @@
 require 'spec_helper'
+require 'database_cleaner'
+
+DatabaseCleaner.strategy = :truncation
 
 describe HotelsController do
   before (:each) do
+    DatabaseCleaner.clean
     @user = create(:user)
     sign_in @user
   end

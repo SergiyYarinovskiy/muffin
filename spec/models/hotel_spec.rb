@@ -1,4 +1,7 @@
 require 'spec_helper'
+require 'database_cleaner'
+
+DatabaseCleaner.strategy = :truncation
 
 describe Hotel do
   it { should have_many(:comments) }
@@ -13,6 +16,7 @@ describe Hotel do
                     less_than(10.megabytes) }
 
   it 'checks if model returns top 5 hotels' do
+    DatabaseCleaner.clean
     h2 = Hotel.create(title: 'h2', rating: 5.0)
     h3 = Hotel.create(title: 'h3', rating: 4.0)
     h1 = Hotel.create(title: 'h1', rating: 3.0)
